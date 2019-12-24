@@ -125,7 +125,7 @@ function about() {
   <audio id="timallen" src="timallen.wav" preload="auto"></audio>
 
   <center><div id="container1"></div></center>
-  <div id="titlediv">IPew Attack Map</div>
+  <div id="titlediv">Real-Time Bell-CTI Attacks Map</div>
   <div id="attackdiv"></div>
   <div id="aboutdiv"><i class="fa fa-question-circle fa-2x" onClick="about();"></i></div>
 
@@ -134,14 +134,8 @@ function about() {
   </div>
 
   <div id="about">
-  <h3>About IPew</h3>
-  Attack maps are the <span style="font-family: monospace;">&lt;blink&gt;</span> tag of information security. They are pure eye candy, meant to scare the general public and <i>WOW</i> unsuspecting executives visiting Security Operations Centers. Yet, security vendors keep cranking them out. We didn't want organizations without "real" data or l33t animation skills to to feel left out, so we built this map for anyone to use [CC BY-SA]. Plus, they're all missing sound effects! And, most (all, really) use mind-numbingly dumb map projections, begging the question: <i>"Does Greenland make my map look big?"</i>.<br/>
-  <br/>
-  The default map uses a statistical model (infrequently updated) for source "attack" node country of origin &amp; frequency while destinations are fully randomized. The default sound is a Star Wars "blaster" (guess which one!). Sounds can be customized and an organization name can be specified, plus there are a few other <i>interesting</i> options.<br/>
-  <br/>
-  Check out the <a target=_blank href='http://github.com/hrbrmstr/pewpew'>github repository</a> for more information and instructions on how to customize the map options for maximum effect.<br/>
-  <br/>
-  Brought to you by <a target=_blank href="http://twitter.com/alexcpsec">@alexcpsec</a>, <a target=_blank href="http://twitter.com/hrbrmstr">@hrbrmstr</a> &amp; <a target=_blank href="http://dds.ec/blog">Data-Driven Security</a>
+  <h3>About Threat Map</h3>
+  Brought to you by Miguel G.
   </div>
 
   <!-- Use Hash-Bang to maintain scroll position when closing modal -->
@@ -453,6 +447,8 @@ function about() {
            // Specify a destination country
            if (typeof destination !== 'undefined' && getDestination() < 80) {
              dstcountry = destination.toUpperCase();
+	     dstlat = 45.430760;
+             dstlong = -75.682000;
              var center_id = 0;
              for (i = 0; i < centers.length; i ++) {
                center_id = i;
@@ -463,11 +459,13 @@ function about() {
 
              dstcountry = destination.toLowerCase();
              attackdiv_slatlong = dstcountry;
-             dstlat = centers[center_id].LAT;
-             dstlong = centers[center_id].LONG;
+	     dstlat = 45.430760;
+             dstlong = -75.682000;
            }
            else {
             attackdiv_slatlong = slatlong[dst]["country"];
+	     dstlat = 45.430760;
+             dstlong = -75.682000;
            }
 
            // Specify attack color
@@ -508,9 +506,9 @@ function about() {
 
            // update the scrolling attack div
            $('#attackdiv').append(srccountry + " (" + randomIP() + ") " +
-                                  " <span style='color:red'>attacks</span> " +
+                                  " <span style='color:red'>attacks</span> BELL-CTI" +
                                   attackdiv_slatlong+  " (" + randomIP() + ") " +
-                                  " <span style='color:steelblue'>(" + which_attack + ")</span> " +
+                                  " <span style='color:steelblue'>(DNS Request)</span>  " +
                                   "<br/>");
            $('#attackdiv').animate({scrollTop: $('#attackdiv').prop("scrollHeight")}, 500);
 
