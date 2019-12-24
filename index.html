@@ -125,7 +125,7 @@ function about() {
   <audio id="timallen" src="timallen.wav" preload="auto"></audio>
 
   <center><div id="container1"></div></center>
-  <div id="titlediv">Real-Time Bell-CTI Attacks Map</div>
+  <div id="titlediv">Bell(CTI) Threat Map</div>
   <div id="attackdiv"></div>
   <div id="aboutdiv"><i class="fa fa-question-circle fa-2x" onClick="about();"></i></div>
 
@@ -507,7 +507,6 @@ function about() {
            // update the scrolling attack div
            $('#attackdiv').append(srccountry + " (" + randomIP() + ") " +
                                   " <span style='color:red'>attacks</span> BELL-CTI" +
-                                  attackdiv_slatlong+  " (" + randomIP() + ") " +
                                   " <span style='color:steelblue'>(DNS Request)</span>  " +
                                   "<br/>");
            $('#attackdiv').animate({scrollTop: $('#attackdiv').prop("scrollHeight")}, 500);
